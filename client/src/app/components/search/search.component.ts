@@ -38,7 +38,8 @@ export class SearchComponent implements OnInit {
 
   search() {
     //TODO: call search function in spotifyService and parse response
-    console.log("hi");
+    console.log(this.searchString);
+    console.log(this.searchCategory);
   }
 
 }
