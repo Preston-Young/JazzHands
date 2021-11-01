@@ -22,24 +22,11 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSearchChange() {
-    console.log(this.searchString);
-  }
-
-  onDropDownClick() {
-    console.log("testing here");
-    console.log("search category: ", this.searchCategory);
-  }
-
-  onDropDownClickNew() {
-    console.log("testing inner");
-    console.log("search category: ", this.searchCategory);
-  }
-
   search() {
     //TODO: call search function in spotifyService and parse response
-    console.log(this.searchString);
-    console.log(this.searchCategory);
+    this.spotifyService.searchFor(this.searchCategory, this.searchString).then(response => {
+      console.log(response);
+    });
   }
 
 }
