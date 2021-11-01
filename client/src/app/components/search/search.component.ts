@@ -26,6 +26,16 @@ export class SearchComponent implements OnInit {
     console.log(this.searchString);
   }
 
+  onDropDownClick() {
+    console.log("testing here");
+    console.log("search category: ", this.searchCategory);
+  }
+
+  onDropDownClickNew() {
+    console.log("testing inner");
+    console.log("search category: ", this.searchCategory);
+  }
+
   search() {
     //TODO: call search function in spotifyService and parse response
     console.log("hi");
