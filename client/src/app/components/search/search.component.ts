@@ -16,6 +16,7 @@ export class SearchComponent implements OnInit {
   searchCategory:string = 'artist';
   searchCategories:string[] = ['artist', 'album', 'track'];
   resources:ResourceData[];
+  carouselId: string = "carousel-id";
 
   constructor(private spotifyService:SpotifyService) { }
 
@@ -25,6 +26,7 @@ export class SearchComponent implements OnInit {
   search() {
     //TODO: call search function in spotifyService and parse response
     this.spotifyService.searchFor(this.searchCategory, this.searchString).then(response => {
+      this.resources = response;
       console.log(response);
     });
   }
