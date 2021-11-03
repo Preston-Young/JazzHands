@@ -84,12 +84,18 @@ export class SpotifyService {
 
   getAlbum(albumId:string):Promise<AlbumData> {
     //TODO: use the album endpoint to make a request to express.
-    return null;
+    return this.sendRequestToExpress(`/album/${albumId}`).then(data => {
+      return new AlbumData(data);
+    });
   }
 
   getTracksForAlbum(albumId:string):Promise<TrackData[]> {
     //TODO: use the tracks for album endpoint to make a request to express.
-    return null;
+    return this.sendRequestToExpress(`/album-tracks/${albumId}`).then(data => {
+      return data.items.map(track => {
+        return new TrackData(track);
+      })
+    });
   }
 
   getTrack(trackId:string):Promise<TrackData> {
