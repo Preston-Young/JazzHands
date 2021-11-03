@@ -58,7 +58,7 @@ export class SpotifyService {
   getRelatedArtists(artistId:string):Promise<ArtistData[]> {
     //TODO: use the related artist endpoint to make a request to express and return an array of artist data.
    return this.sendRequestToExpress(`/artist-related-artists/${artistId}`).then(data => {
-     return data['artists'].items.map(artist => {
+     return data['artists'].map(artist => {
        return new ArtistData(artist);
      })
    });
