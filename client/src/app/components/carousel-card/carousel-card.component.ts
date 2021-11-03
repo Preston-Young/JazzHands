@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ResourceData } from '../../data/resource-data';
+import { ArtistData } from '../../data/artist-data';
 
 @Component({
   selector: 'app-carousel-card',
@@ -8,9 +9,10 @@ import { ResourceData } from '../../data/resource-data';
 })
 export class CarouselCardComponent implements OnInit {
   @Input() resource:ResourceData;
+  @Input() category:string;
 
   constructor() { }
-
+  
   ngOnInit() {
   }
 
