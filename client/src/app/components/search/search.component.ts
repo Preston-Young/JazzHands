@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
-import { ArtistData } from '../../data/artist-data';
-import { AlbumData } from '../../data/album-data';
-import { TrackData } from '../../data/track-data';
 import { ResourceData } from '../../data/resource-data';
 
 @Component({
@@ -25,9 +22,15 @@ export class SearchComponent implements OnInit {
 
   search() {
     //TODO: call search function in spotifyService and parse response
-    this.spotifyService.searchFor(this.searchCategory, this.searchString).then(response => {
+
+    // Only update category once search button is clicked, but can't update this.searchCategory too early or
+    // else it might render the wrong carousel/track-list component before updating this.resources
+    const searchDropdown = document.getElementById('category-dropdown') as HTMLSelectElement;
+    const tempCategory = searchDropdown.options[searchDropdown.selectedIndex].value;
+
+    this.spotifyService.searchFor(tempCategory, this.searchString).then(response => {
       this.resources = response;
-      console.log(response);
+      this.searchCategory = tempCategory;
     });
   }
 

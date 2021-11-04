@@ -28,7 +28,6 @@ export class AlbumPageComponent implements OnInit {
 
     this.spotifyService.getTracksForAlbum(this.albumId).then(data => {
       this.tracks = data;
-      console.log("tracks: ", this.tracks)
     })
   }
 
