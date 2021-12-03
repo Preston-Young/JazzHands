@@ -20,3 +20,5 @@
 		<app-track-list [tracks]="tracks" hideArtist="true" hideAlbum="true"></app-track-list>
 	</div>
 </div>
+
+<app-handtracker (onPrediction)="prediction($event)"></app-handtracker>

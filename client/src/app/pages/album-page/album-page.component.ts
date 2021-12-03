@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ArtistData } from '../../data/artist-data';
 import { TrackData } from '../../data/track-data';
 import { AlbumData } from '../../data/album-data';
 import { SpotifyService } from 'src/app/services/spotify.service';
+import { PredictionEvent } from 'src/app/prediction-event';
 
 @Component({
   selector: 'app-album-page',
@@ -16,7 +17,7 @@ export class AlbumPageComponent implements OnInit {
 	tracks:TrackData[];
 
 
-  constructor(private route: ActivatedRoute, private spotifyService:SpotifyService) { }
+  constructor(private route: ActivatedRoute, private spotifyService:SpotifyService, private router:Router) { }
 
   ngOnInit() {
   	this.albumId = this.route.snapshot.paramMap.get('id');
@@ -29,6 +30,12 @@ export class AlbumPageComponent implements OnInit {
     this.spotifyService.getTracksForAlbum(this.albumId).then(data => {
       this.tracks = data;
     })
+  }
+
+  prediction(event: PredictionEvent){
+    if (event.getPrediction() == "Hand Pointing"){
+      this.router.navigate(['/']);
+    }
   }
 
 }
