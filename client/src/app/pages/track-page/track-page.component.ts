@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArtistData } from '../../data/artist-data';
 import { TrackData } from '../../data/track-data';
@@ -6,6 +6,7 @@ import { AlbumData } from '../../data/album-data';
 import { TrackFeature } from '../../data/track-feature';
 import { SpotifyService } from 'src/app/services/spotify.service';
 import { PredictionEvent } from 'src/app/prediction-event';
+import { HandtrackerComponent } from '../../components/handtracker/handtracker.component';
 
 @Component({
   selector: 'app-track-page',
@@ -16,6 +17,7 @@ export class TrackPageComponent implements OnInit {
 	trackId:string;
 	track:TrackData;
   audioFeatures:TrackFeature[];
+  @ViewChild(HandtrackerComponent) child:HandtrackerComponent;
 
   constructor(private route: ActivatedRoute, private spotifyService:SpotifyService, private router:Router) { }
 
@@ -33,6 +35,7 @@ export class TrackPageComponent implements OnInit {
 
   prediction(event: PredictionEvent){
     if (event.getPrediction() == "Hand Pointing"){
+      this.child.stopDetection();
       this.router.navigate(['/']);
     }
   }
