@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PredictionEvent } from 'src/app/prediction-event';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-player-page',
@@ -8,13 +9,19 @@ import { PredictionEvent } from 'src/app/prediction-event';
 })
 export class PlayerPageComponent implements OnInit {
   gesture: String = "";
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
 
   prediction(event: PredictionEvent){
-    this.gesture = event.getPrediction();
+    if (event.getPrediction() == "Two Hands Closed"){
+      this.back();
+    }
+  }
+
+  back() {
+    this.router.navigate(['/']);
   }
 
 }
