@@ -35,7 +35,8 @@ export class AboutComponent implements OnInit {
   }
 
   onGestureChange(prediction_event: PredictionEvent) {
-    if (prediction_event.getPrediction() === "Open Hand") {
+    console.log("prediction event: ", prediction_event.getPrediction());
+    if (prediction_event.getPrediction() === "Face") {
       this.child.stopDetection();
       this.openAboutMe();
     }

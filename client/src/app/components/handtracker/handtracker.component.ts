@@ -88,6 +88,7 @@ export class HandtrackerComponent implements OnInit {
             let closedhands = 0;
             let pointing = 0;
             let pinching = 0;
+            let face = false;
             for(let p of predictions){
                 //uncomment to view label and position data
                 console.log(p.label + " at X: " + p.bbox[0] + ", Y: " + p.bbox[1] + " at X: " + p.bbox[2] + ", Y: " + p.bbox[3]);
@@ -96,10 +97,17 @@ export class HandtrackerComponent implements OnInit {
                 if(p.label == 'closed') closedhands++;
                 if(p.label == 'point') pointing++;
                 if(p.label == 'pinch') pinching++;
+                if(p.label == 'face') face = true;
                 
             }
 
             // These are just a few options! What about one hand open and one hand closed!?
+
+            // adding face here
+            if (face) {
+              console.log("this is running");
+              this.detectedGesture = "Face";
+            }
 
             if (openhands > 1) this.detectedGesture = "Two Open Hands";
             else if(openhands == 1) this.detectedGesture = "Open Hand";
@@ -113,7 +121,7 @@ export class HandtrackerComponent implements OnInit {
             if (pinching > 1) this.detectedGesture = "Two Hands Pinching";
             else if(pinching == 1) this.detectedGesture = "Hand Pinching";
 
-            if (openhands == 0 && closedhands == 0 && pointing == 0 && pinching == 0)
+            if (openhands == 0 && closedhands == 0 && pointing == 0 && pinching == 0 && !face)
                 this.detectedGesture = "None";
 
             this.onPrediction.emit(new PredictionEvent(this.detectedGesture))

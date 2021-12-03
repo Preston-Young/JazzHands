@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
 import { ResourceData } from '../../data/resource-data';
+import { HandtrackerComponent } from '../handtracker/handtracker.component';
+import { PredictionEvent } from 'src/app/prediction-event';
 
 @Component({
   selector: 'app-search',
@@ -14,6 +16,7 @@ export class SearchComponent implements OnInit {
   searchCategories:string[] = ['artist', 'album', 'track'];
   resources:ResourceData[];
   carouselId: string = "carousel-id";
+  @ViewChild(HandtrackerComponent) child:HandtrackerComponent;
 
   constructor(private spotifyService:SpotifyService) { }
 
@@ -32,6 +35,13 @@ export class SearchComponent implements OnInit {
       this.resources = response;
       this.searchCategory = tempCategory;
     });
+  }
+
+  prediction(event: PredictionEvent){
+    if (event.getPrediction() == "Two Open Hands"){
+      this.child.stopDetection();
+      this.search();
+    }
   }
 
 }

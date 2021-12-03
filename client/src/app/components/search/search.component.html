@@ -13,3 +13,4 @@
 <app-carousel *ngIf="searchCategory === 'artist' || searchCategory === 'album'" [resources]="resources" [carouselId]="carouselId" [resourceType]="searchCategory"></app-carousel>
 <app-track-list *ngIf="searchCategory === 'track'" [tracks]="resources"></app-track-list> 
 <!--TODO: Display a track-list component if searching for a track. Bind track-list's tracks.-->
+<app-handtracker (onPrediction)="prediction($event)"></app-handtracker>
