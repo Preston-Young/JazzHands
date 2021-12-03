@@ -15,7 +15,7 @@ export class PlayerPageComponent implements OnInit {
   }
 
   prediction(event: PredictionEvent){
-    if (event.getPrediction() == "Two Hands Closed"){
+    if (event.getPrediction() == "Open Hand"){
       this.back();
     }
   }

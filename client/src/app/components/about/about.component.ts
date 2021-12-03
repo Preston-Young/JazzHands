@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PredictionEvent } from 'src/app/prediction-event';
 import { SpotifyService } from 'src/app/services/spotify.service';
+import { HandtrackerComponent } from '../handtracker/handtracker.component';
 
 @Component({
   selector: 'app-about',
@@ -11,6 +12,7 @@ export class AboutComponent implements OnInit {
   name:string = null;
   profile_pic:string = "../../../assets/unknown.jpg";
   profile_link:string = null;
+  @ViewChild(HandtrackerComponent) child:HandtrackerComponent;
 
   //TODO: inject the Spotify service
   constructor(private service: SpotifyService) { }
@@ -34,6 +36,7 @@ export class AboutComponent implements OnInit {
 
   onGestureChange(prediction_event: PredictionEvent) {
     if (prediction_event.getPrediction() === "Open Hand") {
+      this.child.stopDetection();
       this.openAboutMe();
     }
   }
