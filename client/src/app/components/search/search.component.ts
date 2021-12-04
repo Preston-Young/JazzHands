@@ -43,6 +43,12 @@ export class SearchComponent implements OnInit {
     if (event.getPrediction() == "Two Open Hands"){
       this.child.stopDetection();
       this.search();
+    } else if (event.getPrediction() == "Open Hand") {
+      $('#category-dropdown').val("album");
+    } else if (event.getPrediction() == "Closed Hand") {
+      $('#category-dropdown').val("track");
+    } else if (event.getPrediction() == "Two Closed Hands") {
+      $('#category-dropdown').val("artist");
     }
   }
 }
