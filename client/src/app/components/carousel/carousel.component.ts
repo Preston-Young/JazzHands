@@ -29,11 +29,11 @@ export class CarouselComponent implements OnInit {
         if (this.isSorted(this.xCorrdinates)) {
           console.log("success!");
           (<any>$('.carousel')).carousel('next');
-          this.xCorrdinates.shift();
+          this.xCorrdinates = [];
         } else if (this.isInverseSorted(this.xCorrdinates)) {
           console.log("success here!");
           (<any>$('.carousel')).carousel('prev');
-          this.xCorrdinates.shift();
+          this.xCorrdinates = []; 
         } else {
           this.xCorrdinates.shift();
         }
