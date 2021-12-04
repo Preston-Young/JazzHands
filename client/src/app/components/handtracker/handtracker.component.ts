@@ -89,6 +89,7 @@ export class HandtrackerComponent implements OnInit {
             let pointing = 0;
             let pinching = 0;
             let face = false;
+            let xCoor = 0;
             for(let p of predictions){
                 //uncomment to view label and position data
                 console.log(p.label + " at X: " + p.bbox[0] + ", Y: " + p.bbox[1] + " at X: " + p.bbox[2] + ", Y: " + p.bbox[3]);
@@ -98,6 +99,7 @@ export class HandtrackerComponent implements OnInit {
                 if(p.label == 'point') pointing++;
                 if(p.label == 'pinch') pinching++;
                 if(p.label == 'face') face = true;
+                xCoor = p.bbox[0];
                 
             }
 
@@ -124,7 +126,7 @@ export class HandtrackerComponent implements OnInit {
             if (openhands == 0 && closedhands == 0 && pointing == 0 && pinching == 0 && !face)
                 this.detectedGesture = "None";
 
-            this.onPrediction.emit(new PredictionEvent(this.detectedGesture))
+            this.onPrediction.emit(new PredictionEvent(this.detectedGesture, xCoor))
         }, (err: any) => {
             console.log("ERROR")
             console.log(err)

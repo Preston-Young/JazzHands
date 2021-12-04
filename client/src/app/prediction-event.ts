@@ -4,12 +4,18 @@
 
 export class PredictionEvent {
     prediction: string = "None";
+    xCoor:Number = null;
 
-    constructor(prediction:string){
+    constructor(prediction:string, xCoor:Number){
         this.prediction = prediction;
+        this.xCoor = xCoor;
     }
 
     public getPrediction(){
         return this.prediction;
+    }
+
+    public getCoordinate() {
+        return this.xCoor;
     }
 }

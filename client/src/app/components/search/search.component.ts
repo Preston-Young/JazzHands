@@ -16,6 +16,8 @@ export class SearchComponent implements OnInit {
   searchCategories:string[] = ['artist', 'album', 'track'];
   resources:ResourceData[];
   carouselId: string = "carousel-id";
+  // tester for swipe 
+  xCorrdinates:Number[] = [];
   @ViewChild(HandtrackerComponent) child:HandtrackerComponent;
 
   constructor(private spotifyService:SpotifyService) { }
@@ -41,7 +43,47 @@ export class SearchComponent implements OnInit {
     if (event.getPrediction() == "Two Open Hands"){
       this.child.stopDetection();
       this.search();
+    } else if (event.getPrediction() == "Closed Hand") {
+      this.xCorrdinates.push(event.getCoordinate());
+      console.log("x coordinates: ", this.xCorrdinates);
+      
+      if (this.xCorrdinates.length == 5) {
+        if (this.isSorted(this.xCorrdinates)) {
+          console.log("success!");
+          this.xCorrdinates.shift();
+        } else if (this.isInverseSorted(this.xCorrdinates)) {
+          console.log("success here!");
+          this.xCorrdinates.shift();
+        } else {
+          this.xCorrdinates.shift();
+        }
+      }
     }
   }
 
+  isSorted(arr:Number[]) {
+    let sorted = true;
+
+    for (let i = 0; i < arr.length - 1; i++) {
+      if (arr[i] > arr[i+1]) {
+        sorted = false;
+        break;
+      }
+    }
+
+    return sorted;
+  }
+
+  isInverseSorted(arr:Number[]) {
+    let sorted = true;
+
+    for (let i = 0; i < arr.length - 1; i++) {
+      if (arr[i] < arr[i+1]) {
+        sorted = false;
+        break;
+      }
+    }
+
+    return sorted;
+  }
 }
