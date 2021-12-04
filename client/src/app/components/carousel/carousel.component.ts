@@ -39,9 +39,6 @@ export class CarouselComponent implements OnInit {
         }
       }
     }
-    // else if (prediction_event.getPrediction() === "Open Hand") {
-    //   (<any>$('.carousel')).carousel('next');
-    // }
     else if (prediction_event.getPrediction() === "Two Open Hands") {
       this.child.stopDetection();
     }
