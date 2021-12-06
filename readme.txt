@@ -1,31 +1,26 @@
---Readme document for *author(s)*, *email(s)*, *UCI id(s)*--
+--Readme document for Preston Young, Jordan Young--
 
-1. How many assignment points do you believe you completed (replace the *'s with your numbers)?
+How many assignment points do you believe you completed (replace the *'s with your numbers)?
+20/20
 
-10/10
-- 1/1 Communicating with the webserver
-- 1/1 Populating information about the user
-- 3/3 Populating the search component
-- 2/2 Artist page
-- 1.5/1.5 Album page
-- 1.5/1.5 Track page
+7/7 A functional web app
+5/5 The ability to control the web app with basic gestures (5 points, 1 per gesture)
+2/2 The ability to control the web app with custom gestures (2 points)
+2/2 Following good principles of UI design (2 points)
+2/2 Creating a compelling app (2 points)
+2/2 A readme and demo video which explains how these features were implemented and their design rationale (2 point)
+How long, in hours, did it take you to complete this assignment?
+9 hours
 
+What online resources did you consult when completing this assignment? (list specific URLs)
+https://getbootstrap.com/docs/4.1/components/carousel/#carouselprev
+https://www.geeksforgeeks.org/how-to-change-selected-value-of-a-drop-down-list-using-jquery/
+https://stackoverflow.com/questions/24984014/how-can-i-stop-property-does-not-exist-on-type-jquery-syntax-errors-when-using
+https://stackoverflow.com/questions/32735396/error-ts2339-property-modal-does-not-exist-on-type-jquery
+https://angular.io/guide/inputs-outputs
 
-2. How long, in hours, did it take you to complete this assignment?
-11 hours
+What classmates or other individuals did you consult as part of this assignment? What did you discuss?
+Jordan Young, he was my partner for the project and we took turns being the "driver" in pair programming.
 
-
-3. What online resources did you consult when completing this assignment? (list specific URLs)
-I don't have the specific URLs anymore, but my partner and I consulted w3 schools, Stack Overflow, and Geek for Geeks.
-
-
-4. What classmates or other individuals did you consult as part of this assignment? What did you discuss?
-Jordan Young: We were partners and took turns in pair programming.
-
-
-5. Did you add a bonus feature to your submission? If so, what is it and how should we see it?
-No.
-
-
-6. Is there anything special we need to know in order to run your code?
-No.
+Is there anything special we need to know in order to run your code?
+First make sure to run npm install in client and webserver. Since this project is derivative of A3, run npm start in the webserver folder and ng serve --open in the client folder to start.
