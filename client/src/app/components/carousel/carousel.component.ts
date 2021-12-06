@@ -25,7 +25,7 @@ export class CarouselComponent implements OnInit {
       this.xCorrdinates.push(prediction_event.getCoordinate());
       console.log("x coordinates: ", this.xCorrdinates);
       
-      if (this.xCorrdinates.length == 5) {
+      if (this.xCorrdinates.length == 3) {
         if (this.isSorted(this.xCorrdinates)) {
           console.log("success!");
           (<any>$('.carousel')).carousel('next');
